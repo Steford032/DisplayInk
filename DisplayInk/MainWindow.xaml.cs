@@ -75,20 +75,6 @@ namespace displayInk
 
         private void paintPoint(Brush color, Point position)
         {
-            //Ellipse newEllipse = new Ellipse();
-            //newEllipse.Fill = color;
-            //newEllipse.Width = diameter;
-            //newEllipse.Height = diameter;
-            //Canvas.SetTop(newEllipse, position.Y);
-            //Canvas.SetLeft(newEllipse, position.X);
-            //______________________________________
-            //Line ln = new Line();
-            //ln.X1 = 1;
-            //ln.Y1 = 1;
-            //ln.X2 = 1920;
-            //ln.Y2 = 1080;
-            //ln.Stroke = brushCol;
-            //paintCanvas.Children.Add(ln);
             points.SetPoint((int)position.X, (int)position.Y);
             if (points.Index() >= 2)
             {
