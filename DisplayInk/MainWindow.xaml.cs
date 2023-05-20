@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,7 @@ namespace displayInk
     /// </summary>
     public partial class MainWindow : Window
     {
-        int diameter = (int)Sizes.small;
+        double diameter = (int)Sizes.small;
         private Brush brushCol = Brushes.Black;
 
         private bool isPaint = false;
@@ -68,13 +68,13 @@ namespace displayInk
 
         public MainWindow()
         {
-
             InitializeComponent();
             Height = SystemParameters.WorkArea.Height;
         }
 
         private void paintPoint(Brush color, Point position)
         {
+           //Creating line as array of sublines
             points.SetPoint((int)position.X, (int)position.Y);
             if (points.Index() >= 2)
             {
@@ -82,7 +82,7 @@ namespace displayInk
                 {
                     Line line = new Line();
                     line.Stroke = brushCol;
-                    line.StrokeThickness = 5;
+                    line.StrokeThickness = diameter;
                     line.X1 = points.getPoints()[i].X;
                     line.Y1 = points.getPoints()[i].Y;
                     line.X2 = points.getPoints()[i + 1].X;
@@ -92,9 +92,9 @@ namespace displayInk
                 }
                 points.SetPoint((int)position.X, (int)position.Y);
             }
-            // paintCanvas.Children.Add(newEllipse);
-        }
 
+        }
+        //Method for linking mouse's moveing and drawing the line
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (isPaint)
@@ -119,22 +119,9 @@ namespace displayInk
             brushCol = Brushes.Black;
         }
 
-        private void Slider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            diameter = (int)slider.Value;
-        }
-
         private void paintCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             isPaint = true;
-            Line ln = new Line();
-            ln.Stroke = Brushes.Black;
-            ln.Fill = Brushes.Black;
-            ln.StrokeThickness = 30;
-            ln.X1 = 1;
-            ln.Y1 = 1;
-            ln.X2 = 1000;
-            ln.Y2 = 1000;
         }
 
         private void paintCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -143,10 +130,10 @@ namespace displayInk
             points.Reset();
         }
 
-        private void slider_MouseDown(object sender, MouseButtonEventArgs e)
+        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            diameter = (int)slider.Value;
+            //Changing pen's width with Slider
+            diameter = this.slider.Value;
         }
-
     }
 }
