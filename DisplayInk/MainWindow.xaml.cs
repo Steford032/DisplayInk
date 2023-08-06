@@ -20,7 +20,7 @@ namespace DisplayInk
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		double diameter = (double)50;
+		double diameter;
 		private Brush brushCol = Brushes.Black;
 
 		private bool isPaint = false;
@@ -30,11 +30,12 @@ namespace DisplayInk
 		{
 			private int index = 0;
 			private Point[] points;
-			public ArrayPoints(int size)
+            
+            public ArrayPoints(int size)
 			{
 				if (size <= 0) size = 2;
 				points = new Point[size];
-			}
+            }
 
 			public void SetPoint(int x, int y)
 			{
@@ -154,6 +155,13 @@ namespace DisplayInk
         {
             brushCol = Brushes.DarkGray;
         }
+		
+		private void ClearAllBtn_Click(object sender, RoutedEventArgs e)
+		{
+			paintCanvas.Children.Clear();
+		}
+
+
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{

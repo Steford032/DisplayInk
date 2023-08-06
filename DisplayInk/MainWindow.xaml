@@ -27,6 +27,7 @@
 
         <StackPanel VerticalAlignment="Bottom"
                     Background="BlanchedAlmond"
+                    Orientation="Horizontal"
                     Margin="0 0 0 50" Height="110"
                     Width="800"
                     Opacity="0.8" >
@@ -123,21 +124,34 @@
                         BorderThickness="2"/>
             </Grid>
 
-            <Grid  Background="#FFDCB07C" 
-                       Height="100" 
-                       Width="300"
-                       Margin="-110" 
-                       VerticalAlignment="Top">
-                
-                    <TextBox Text="Pens size"></TextBox>
-                    <Slider x:Name="slider"
+            <Grid Width="100"
+                  Height="80"
+                  Margin="100 0 0 0"
+                  VerticalAlignment="Top">
+
+                <TextBlock Text="Pen size"
+                         HorizontalAlignment="Center"
+                         Background="Transparent"
+                           FontSize="18"
+                           FontWeight="Bold"/>
+                <Slider x:Name="slider"
                         Background="black" 
                         HorizontalAlignment="Left" 
-                        Width="90" Height="30" 
+                        Width="100" Height="30" 
                         SmallChange="1" 
                         Minimum="2" 
                         Value="4"
                         ValueChanged="slider_ValueChanged"/>
+            </Grid>
+
+            <Grid VerticalAlignment="Top"
+                  Margin="100 50 0 0">
+                <Button  Background="DarkGray"
+                        Content="Button"
+                        Height ="20" Width="50"
+                        Click="ClearBtn_Click"
+                        Margin="0 0 0 4"
+                        BorderThickness="2"/>
             </Grid>
         </StackPanel>
 
