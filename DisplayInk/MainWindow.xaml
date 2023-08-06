@@ -149,7 +149,7 @@
                 <Button  Background="DarkGray"
                         Content="Button"
                         Height ="20" Width="50"
-                        Click="ClearBtn_Click"
+                        Click="ClearAllBtn_Click"
                         Margin="0 0 0 4"
                         BorderThickness="2"/>
             </Grid>
