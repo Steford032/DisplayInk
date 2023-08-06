@@ -20,7 +20,7 @@ namespace DisplayInk
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		double diameter = (double)15;
+		double diameter = (double)50;
 		private Brush brushCol = Brushes.Black;
 
 		private bool isPaint = false;
@@ -60,14 +60,6 @@ namespace DisplayInk
 		}
 
 		private ArrayPoints points = new ArrayPoints(2);
-
-
-		private enum Sizes
-		{
-			small = 5,
-			med = 10,
-			large = 15
-		}
 
 		public MainWindow()
 		{
@@ -122,24 +114,48 @@ namespace DisplayInk
 
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void BlackBtn_Click(object sender, RoutedEventArgs e)
 		{
 			brushCol = Brushes.Black;
 		}
-
-		private void button1_Click(object sender, RoutedEventArgs e)
+		private void RedBtn_Click(object sender, RoutedEventArgs e)
 		{
 			brushCol = Brushes.Red;
 		}
-
-		private void button2_Click(object sender, RoutedEventArgs e)
+		private void GreenBtn_Click(object sender, RoutedEventArgs e)
 		{
 			brushCol = Brushes.LightGreen;
-			//sender.GetType().GetField("Background").GetValue();
-
 		}
+        private void GrayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            brushCol = Brushes.Gray;
+        }
+        private void OrangeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            brushCol = Brushes.Orange;
+        }
+        private void YellowBtn_Click(object sender, RoutedEventArgs e)
+        {
+            brushCol = Brushes.Yellow;
+        }
+        private void WhiteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            brushCol = Brushes.White;
+        }
+        private void VioletBtn_Click(object sender, RoutedEventArgs e)
+        {
+            brushCol = Brushes.Violet;
+        }
+        private void BlueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            brushCol = Brushes.Blue;
+        }
+        private void DarkGrayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            brushCol = Brushes.DarkGray;
+        }
 
-		private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
 			//Changing pen's width with Slider
 			diameter = this.slider.Value;

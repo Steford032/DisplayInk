@@ -48,7 +48,7 @@
                 <Button x:Name="button" Background="Black"
                         Grid.Column="0" Grid.Row="0"
                         Height ="30" Width="30"
-                        Click="Button_Click"
+                        Click="BlackBtn_Click"
                         HorizontalAlignment="Left"
                         Margin="0 0 0 4"
                         BorderThickness="2"/>
@@ -56,7 +56,7 @@
                 <Button x:Name="button1" Background="#FFDA5050"
                         Grid.Column="0" Grid.Row="1"
                         Height ="30" Width="30"
-                        Click="button1_Click"
+                        Click="RedBtn_Click"
                         HorizontalAlignment="Left"
                         Margin="0 0 0 4"
                         BorderThickness="2"/>
@@ -64,14 +64,14 @@
                 <Button x:Name="button2" Background="LightGreen"
                         Grid.Column="0" Grid.Row="2"
                         Height ="30" Width="30"
-                        Click="button2_Click"
+                        Click="GreenBtn_Click"
                         HorizontalAlignment="Left"
                         BorderThickness="2"/>
                 
                 <Button x:Name="button3" Background="Gray"
                         Grid.Column="1" Grid.Row="0"
                         Height ="30" Width="30"
-                        Click="button2_Click"
+                        Click="GrayBtn_Click"
                         HorizontalAlignment="Left"
                         Margin="0 0 0 4"
                         BorderThickness="2"/>
@@ -79,7 +79,7 @@
                 <Button x:Name="button4" Background="Yellow"
                         Grid.Column="1" Grid.Row="1"
                         Height ="30" Width="30"
-                        Click="button2_Click"
+                        Click="YellowBtn_Click"
                         HorizontalAlignment="Left"
                         Margin="0 0 0 4"
                         BorderThickness="2"/>
@@ -87,14 +87,14 @@
                 <Button x:Name="button5" Background="Orange"
                         Grid.Column="1" Grid.Row="2"
                         Height ="30" Width="30"
-                        Click="button2_Click"
+                        Click="OrangeBtn_Click"
                         HorizontalAlignment="Left"
                         BorderThickness="2"/>
 
                 <Button x:Name="button6" Background="White"
                         Grid.Column="2" Grid.Row="0"
                         Height ="30" Width="30"
-                        Click="button2_Click"
+                        Click="WhiteBtn_Click"
                         HorizontalAlignment="Left"
                         Margin="0 0 0 4"
                         BorderThickness="2"/>
@@ -102,7 +102,7 @@
                 <Button x:Name="button7" Background="Violet"
                         Grid.Column="2" Grid.Row="1"
                         Height ="30" Width="30"
-                        Click="button2_Click"
+                        Click="VioletBtn_Click"
                         HorizontalAlignment="Left"
                         Margin="0 0 0 4"
                         BorderThickness="2"/>
@@ -110,22 +110,35 @@
                 <Button x:Name="button8" Background="Blue"
                         Grid.Column="2" Grid.Row="2"
                         Height ="30" Width="30"
-                        Click="button2_Click"
+                        Click="BlueBtn_Click"
                         HorizontalAlignment="Left"
                         BorderThickness="2"/>
                 
                 <Button x:Name="button9" Background="DarkGray"
                         Grid.Column="3" Grid.Row="1"
                         Height ="20" Width="20"
-                        Click="button2_Click"
+                        Click="DarkGrayBtn_Click"
                         HorizontalAlignment="Left"
                         Margin="0 0 0 4"
                         BorderThickness="2"/>
             </Grid>
 
-            <GroupBox  Background="#FFDCB07C" Header="GroupBox" Height="100" Width="300" Margin="-110" VerticalAlignment="Top">
-                <Slider x:Name="slider" Background="black" HorizontalAlignment="Left" Margin="10,0,0,0" Width="90" Height="30" SmallChange="1" Minimum="1" ValueChanged="slider_ValueChanged"/>
-            </GroupBox>
+            <Grid  Background="#FFDCB07C" 
+                       Height="100" 
+                       Width="300"
+                       Margin="-110" 
+                       VerticalAlignment="Top">
+                
+                    <TextBox Text="Pens size"></TextBox>
+                    <Slider x:Name="slider"
+                        Background="black" 
+                        HorizontalAlignment="Left" 
+                        Width="90" Height="30" 
+                        SmallChange="1" 
+                        Minimum="2" 
+                        Value="4"
+                        ValueChanged="slider_ValueChanged"/>
+            </Grid>
         </StackPanel>
 
     </Grid>
