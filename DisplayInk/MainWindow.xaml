@@ -11,6 +11,15 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="ColorQuickAccess" TargetType="Button">
+            <Setter Property="Width" Value="35"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="0 0 0 4"/>
+        </Style>
+    </Window.Resources>
 
     <Grid Background="Transparent" Height="1080">
         <Rectangle Opacity="0.15" Height="1080" Stroke="#FFB65454" Width="1920">
@@ -18,21 +27,24 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
             </Rectangle.Fill>
         </Rectangle>
-        
-        <Canvas x:Name="paintCanvas" Background="Transparent" Height="1080" Width="1920"
-                Canvas.Left="-960" HorizontalAlignment="Stretch"
+
+        <Canvas x:Name="paintCanvas" Background="Transparent"
+                Canvas.Left="-960" Height="1080"
                 MouseMove="Canvas_MouseMove" 
                 MouseLeftButtonDown="paintCanvas_MouseLeftButtonDown"
-                MouseLeftButtonUp="paintCanvas_MouseLeftButtonUp"/>
+                MouseLeftButtonUp="paintCanvas_MouseLeftButtonUp" 
+                MouseRightButtonDown="paintCanvas_MouseRightButtonDown"
+                MouseRightButtonUp="paintCanvas_MouseRightButtonUp"/>
 
         <StackPanel VerticalAlignment="Bottom"
                     Background="BlanchedAlmond"
+                    Margin="0 0 0 20"
                     Orientation="Horizontal"
-                    Margin="0 0 0 50" Height="110"
+                    Height="140"
                     Width="800"
-                    Opacity="0.8" >
-            
-            <Grid Margin="6" Width="134" HorizontalAlignment="Left">
+                    Opacity="0.8">
+
+            <Grid Margin="30 8 0 8" Width="180" HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -45,114 +57,105 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-            
+
                 <Button x:Name="button" Background="Black"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="0" Grid.Row="0"
-                        Height ="30" Width="30"
                         Click="BlackBtn_Click"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 4"
-                        BorderThickness="2"/>
+                        Margin="0 0 0 4"/>
 
                 <Button x:Name="button1" Background="#FFDA5050"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="0" Grid.Row="1"
-                        Height ="30" Width="30"
-                        Click="RedBtn_Click"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 4"
-                        BorderThickness="2"/>
+                        Click="RedBtn_Click"/>
 
                 <Button x:Name="button2" Background="LightGreen"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="0" Grid.Row="2"
-                        Height ="30" Width="30"
                         Click="GreenBtn_Click"
-                        HorizontalAlignment="Left"
-                        BorderThickness="2"/>
-                
+                        Margin="0"/>
+
                 <Button x:Name="button3" Background="Gray"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="1" Grid.Row="0"
-                        Height ="30" Width="30"
-                        Click="GrayBtn_Click"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 4"
-                        BorderThickness="2"/>
-                
+                        Click="GrayBtn_Click"/>
+
                 <Button x:Name="button4" Background="Yellow"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="1" Grid.Row="1"
-                        Height ="30" Width="30"
-                        Click="YellowBtn_Click"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 4"
-                        BorderThickness="2"/>
-                
+                        Click="YellowBtn_Click"/>
+
                 <Button x:Name="button5" Background="Orange"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="1" Grid.Row="2"
-                        Height ="30" Width="30"
                         Click="OrangeBtn_Click"
-                        HorizontalAlignment="Left"
-                        BorderThickness="2"/>
+                        Margin="0"/>
 
                 <Button x:Name="button6" Background="White"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="2" Grid.Row="0"
-                        Height ="30" Width="30"
-                        Click="WhiteBtn_Click"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 4"
-                        BorderThickness="2"/>
+                        Click="WhiteBtn_Click"/>
 
                 <Button x:Name="button7" Background="Violet"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="2" Grid.Row="1"
-                        Height ="30" Width="30"
-                        Click="VioletBtn_Click"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 4"
-                        BorderThickness="2"/>
+                        Click="VioletBtn_Click"/>
 
                 <Button x:Name="button8" Background="Blue"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="2" Grid.Row="2"
-                        Height ="30" Width="30"
-                        Click="BlueBtn_Click"
-                        HorizontalAlignment="Left"
-                        BorderThickness="2"/>
-                
-                <Button x:Name="button9" Background="DarkGray"
+                        Margin="0"
+                        Click="BlueBtn_Click"/>
+
+                <Button x:Name="button9" Background="White"
+                        Style="{StaticResource ColorQuickAccess}"
                         Grid.Column="3" Grid.Row="1"
-                        Height ="20" Width="20"
                         Click="DarkGrayBtn_Click"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 4"
-                        BorderThickness="2"/>
+                        Margin="4 0 0 4">
+                    <Image Source="Assets/ColorPickerIcon.png"></Image>
+                </Button>
+
             </Grid>
 
-            <Grid Width="100"
-                  Height="80"
-                  Margin="100 0 0 0"
-                  VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <Border Background="Gray"
+                    BorderThickness="3"
+                    BorderBrush="DarkSlateGray"
+                    Width="100" Height="60"
+                    CornerRadius="5"
+                    Margin="50 0 0 0">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Pen size"
+                                 HorizontalAlignment="Center"
+                                 FontSize="16"
+                                 FontWeight="Bold"
+                                 Margin="4"/>
+                        <Slider x:Name="slider"
+                                HorizontalAlignment="Left" 
+                                Width="100" Height="20"
+                                SmallChange="1" 
+                                Minimum="2" 
+                                Value="4"
+                                ValueChanged="slider_ValueChanged">
+                        </Slider>
+                    </StackPanel>
+                </Border>
 
-                <TextBlock Text="Pen size"
-                         HorizontalAlignment="Center"
-                         Background="Transparent"
-                           FontSize="18"
-                           FontWeight="Bold"/>
-                <Slider x:Name="slider"
-                        Background="black" 
-                        HorizontalAlignment="Left" 
-                        Width="100" Height="30" 
-                        SmallChange="1" 
-                        Minimum="2" 
-                        Value="4"
-                        ValueChanged="slider_ValueChanged"/>
-            </Grid>
-
-            <Grid VerticalAlignment="Top"
-                  Margin="100 50 0 0">
-                <Button  Background="DarkGray"
-                        Content="Button"
-                        Height ="20" Width="50"
-                        Click="ClearAllBtn_Click"
-                        Margin="0 0 0 4"
-                        BorderThickness="2"/>
-            </Grid>
+                <Border Margin="50 0 0 0" CornerRadius="5" 
+                    Height ="60" Width="100"
+                    BorderThickness="3"
+                    BorderBrush="DarkSlateGray"
+                    Background="Gray">
+                    <Button Background="Transparent"
+                        Cursor="Hand"
+                        BorderBrush="Transparent"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Click="ClearAllBtn_Click">
+                        <TextBlock Text="Clean all" TextWrapping="Wrap"></TextBlock>
+                    </Button>
+                </Border>
+            </StackPanel>
         </StackPanel>
 
     </Grid>

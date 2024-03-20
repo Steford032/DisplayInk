@@ -55,7 +55,7 @@ namespace DisplayInk
 			}
 		}
 
-		private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
 		{
 			if (isPaint)
 			{
@@ -64,9 +64,19 @@ namespace DisplayInk
 			}
 			if (isErase)
 			{
-				Point mousePos = e.GetPosition(paintCanvas);
-				paintPoint(brushCol, mousePos);
-			}
+                Point mousePosition = e.GetPosition(paintCanvas);
+
+                UIElement elementAtMouse = GetElementAtPoint(paintCanvas, mousePosition);
+
+                if (elementAtMouse != null)
+                {
+                    paintCanvas.Children.Remove(elementAtMouse);
+                }
+            }
+		}
+		private void paintCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+			isPaint = true;
 		}
 
 		private void paintCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -75,49 +85,74 @@ namespace DisplayInk
 			points.Reset();
 		}
 
-		private void paintCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		{
-			isPaint = true;
+        private void paintCanvas_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            isErase = false;
+        }
 
-		}
+        private void paintCanvas_MouseRightButtonDown(object sender, MouseEventArgs e)
+        {
+			isErase = true;
+        }
 
-		private void BlackBtn_Click(object sender, RoutedEventArgs e)
+        private UIElement GetElementAtPoint(Canvas canvas, Point point)
+        {
+            HitTestResult hitTestResult = VisualTreeHelper.HitTest(canvas, point);
+
+            if (hitTestResult != null && hitTestResult.VisualHit is UIElement element)
+            {
+                return element;
+            }
+
+            return null;
+        }
+
+        private void BlackBtn_Click(object sender, RoutedEventArgs e)
 		{
 			brushCol = Brushes.Black;
 		}
+		
 		private void RedBtn_Click(object sender, RoutedEventArgs e)
 		{
 			brushCol = Brushes.Red;
 		}
+		
 		private void GreenBtn_Click(object sender, RoutedEventArgs e)
 		{
 			brushCol = Brushes.LightGreen;
 		}
-        private void GrayBtn_Click(object sender, RoutedEventArgs e)
+        
+		private void GrayBtn_Click(object sender, RoutedEventArgs e)
         {
             brushCol = Brushes.Gray;
         }
-        private void OrangeBtn_Click(object sender, RoutedEventArgs e)
+       
+		private void OrangeBtn_Click(object sender, RoutedEventArgs e)
         {
             brushCol = Brushes.Orange;
         }
-        private void YellowBtn_Click(object sender, RoutedEventArgs e)
+        
+		private void YellowBtn_Click(object sender, RoutedEventArgs e)
         {
             brushCol = Brushes.Yellow;
         }
-        private void WhiteBtn_Click(object sender, RoutedEventArgs e)
+        
+		private void WhiteBtn_Click(object sender, RoutedEventArgs e)
         {
             brushCol = Brushes.White;
         }
-        private void VioletBtn_Click(object sender, RoutedEventArgs e)
+        
+		private void VioletBtn_Click(object sender, RoutedEventArgs e)
         {
             brushCol = Brushes.Violet;
         }
-        private void BlueBtn_Click(object sender, RoutedEventArgs e)
+       
+		private void BlueBtn_Click(object sender, RoutedEventArgs e)
         {
             brushCol = Brushes.Blue;
         }
-        private void DarkGrayBtn_Click(object sender, RoutedEventArgs e)
+        
+		private void DarkGrayBtn_Click(object sender, RoutedEventArgs e)
         {
             brushCol = Brushes.DarkGray;
         }
@@ -126,8 +161,6 @@ namespace DisplayInk
 		{
 			paintCanvas.Children.Clear();
 		}
-
-
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
